@@ -1,13 +1,11 @@
 _G.Config = {
     log = {
-        post = 3000,
         apikey = "d4e674c9-3786-4d43-9c3a-0b6d7b70a257"
     }
 }
 
 local requests = (syn and syn.request) or (krnl and request) or (fluxus and fluxus.request) or (electron and http.request) or request or http.request
-local port = _G.Config.log.post
-local host = "http://localhost:"..port
+local host = "http://zemondv.xyz"
 local apikey = _G.Config.log.apikey
 getgenv().Local=function(data)
     if data==1 then return game.Players.LocalPlayer.Name end
@@ -314,35 +312,33 @@ end
 print("Loading Function: 3")
 
 task.spawn(function()
+    pcall(function ()
+        local bodydata = {
+            api_key = apikey,
+            data = {
+                active = "",
+                lastupdate = "",
+                username = getgenv().Local(1),
+                info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
+                fruit = getFruit(),
+                awakenskill = GetNewAwake(),
+                allfightingstyles = GetAllMeleeNew(),
+                race = game:GetService("Players").LocalPlayer.Data.Race.Value.." ["..CheckRaceV()..GetRaceTier().."]",
+                mirror = CheckMirrorFractalNew(),
+                valkyrie = CheckVK(),
+                darkfragment = GetDarkFragment(),
+                materialinv = "DrakFragment".."["..GetDarkFragment().."]",
+                beli = Abbreviate(game.Players.LocalPlayer.Data.Beli.Value),
+                fragment = Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value),
+                fruitinv = GetFruitInU()
+            }
+        }
+        local jsonData = json_encode(bodydata)
+        local send = Added(jsonData)
+        print(send)
+    end)
+
     while true do
-	pcall(function ()
-	        local bodydata = {
-	            api_key = apikey,
-	            data = {
-	                active = "",
-	                lastupdate = "",
-	                username = getgenv().Local(1),
-	                info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
-	                fruit = getFruit(),
-	                awakenskill = GetNewAwake(),
-	                allfightingstyles = GetAllMeleeNew(),
-	                race = game:GetService("Players").LocalPlayer.Data.Race.Value.." ["..CheckRaceV()..GetRaceTier().."]",
-	                mirror = CheckMirrorFractalNew(),
-	                valkyrie = CheckVK(),
-	                darkfragment = GetDarkFragment(),
-	                materialinv = "DrakFragment".."["..GetDarkFragment().."]",
-	                beli = Abbreviate(game.Players.LocalPlayer.Data.Beli.Value),
-	                fragment = Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value),
-	                fruitinv = GetFruitInU()
-	            }
-	        }
-	        local jsonData = json_encode(bodydata)
-	        local send = Added(jsonData)
-	        for i,v in pairs(sned) do
-		     print(i,v)
-		end
-	    end)
-			
         pcall(function ()
             local bodydata = {
                 api_key = apikey,
@@ -366,9 +362,7 @@ task.spawn(function()
             }
             local jsonData = json_encode(bodydata)
             local send = Update(jsonData)
-	    for i,v in pairs(sned) do
-		print(i,v)
-	    end
+	    print(send)
         end)
         wait(2)
     end;
