@@ -315,60 +315,14 @@ print("Loading Function: 3")
 
 task.spawn(function()
     while true do
-	pcall(function ()
-	        local bodydata = {
-	            api_key = apikey,
-	            data = {
-	                active = "true",
-	                lastupdate = "true",
-	                username = getgenv().Local(1),
-	                info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
-	                fruit = getFruit(),
-	                awakenskill = GetNewAwake(),
-	                allfightingstyles = GetAllMeleeNew(),
-	                race = game:GetService("Players").LocalPlayer.Data.Race.Value.." ["..CheckRaceV()..GetRaceTier().."]",
-	                mirror = CheckMirrorFractalNew(),
-	                valkyrie = CheckVK(),
-	                darkfragment = GetDarkFragment(),
-	                materialinv = "DrakFragment".."["..GetDarkFragment().."]",
-	                beli = Abbreviate(game.Players.LocalPlayer.Data.Beli.Value),
-	                fragment = Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value),
-	                fruitinv = GetFruitInU()
-	            }
-	        }
-	        local jsonData = json_encode(bodydata)
-	        local send = Added(jsonData)
-	        for i,v in pairs(sned) do
-		     print(i,v)
-		end
-	    end)
-			
         pcall(function ()
-            local bodydata = {
-                api_key = apikey,
-                data = {
-                    active = "true",
-                    lastupdate = "true",
-                    username = getgenv().Local(1),
-                    info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
-                    fruit = getFruit(),
-                    awakenskill = GetNewAwake(),
-                    allfightingstyles = GetAllMeleeNew(),
-                    race = game:GetService("Players").LocalPlayer.Data.Race.Value.." ["..CheckRaceV()..GetRaceTier().."]",
-                    mirror = CheckMirrorFractalNew(),
-                    valkyrie = CheckVK(),
-                    darkfragment = GetDarkFragment(),
-                    materialinv = "DrakFragment".."["..GetDarkFragment().."]",
-                    beli = Abbreviate(game.Players.LocalPlayer.Data.Beli.Value),
-                    fragment = Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value),
-                    fruitinv = GetFruitInU()
-                }
-            }
-            local jsonData = json_encode(bodydata)
+            local jsonData = '{"api_key":"'..apikey..'","data":{"active":"true","lastupdate":"true","username":"'..getgenv().Local(1)..'","info":"'..CheckLevel()..''..GetGOD()..CheckCDKNew()..CheckSGTNew()..'","fruit":"'..getFruit()..'","awakenskill":"'..GetNewAwake()..'","allfightingstyles":"'..GetAllMeleeNew()..'","race":"'..game:GetService("Players").LocalPlayer.Data.Race.Value..' ['..CheckRaceV()..GetRaceTier()..']'..'","mirror":"'..CheckMirrorFractalNew()..'","valkyrie":"'..CheckVK()..'","darkfragment":"'..GetDarkFragment()..'","materialinv":"DarkFragment ['..GetDarkFragment()..']'..'","beli":"'..Abbreviate(game.Players.LocalPlayer.Data.Beli.Value)..'","fragment":"'..Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value)..'","fruitinv":"'..GetFruitInU()..'"}}'
+            local send = Added(jsonData)
+        end)
+        
+        pcall(function ()
+            local jsonData = '{"api_key":"'..apikey..'","data":{"active":"true","lastupdate":"true","username":"'..getgenv().Local(1)..'","info":"'..CheckLevel()..''..GetGOD()..CheckCDKNew()..CheckSGTNew()..'","fruit":"'..getFruit()..'","awakenskill":"'..GetNewAwake()..'","allfightingstyles":"'..GetAllMeleeNew()..'","race":"'..game:GetService("Players").LocalPlayer.Data.Race.Value..' ['..CheckRaceV()..GetRaceTier()..']'..'","mirror":"'..CheckMirrorFractalNew()..'","valkyrie":"'..CheckVK()..'","darkfragment":"'..GetDarkFragment()..'","materialinv":"DarkFragment ['..GetDarkFragment()..']'..'","beli":"'..Abbreviate(game.Players.LocalPlayer.Data.Beli.Value)..'","fragment":"'..Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value)..'","fruitinv":"'..GetFruitInU()..'"}}'
             local send = Update(jsonData)
-	    for i,v in pairs(sned) do
-		print(i,v)
-	    end
         end)
         wait(2)
     end;
