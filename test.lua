@@ -317,7 +317,7 @@ task.spawn(function()
     while true do
 	pcall(function ()
 	        local bodydata = {
-	            ['api_key'] = apikey,
+	            api_key = apikey,
 	            data = {
 	                active = "",
 	                lastupdate = "",
@@ -345,7 +345,7 @@ task.spawn(function()
 			
         pcall(function ()
             local bodydata = {
-                ['api_key'] = apikey,
+                api_key = apikey,
                 data = {
                     active = "",
                     lastupdate = "",
