@@ -319,8 +319,8 @@ task.spawn(function()
 	        local bodydata = {
 	            api_key = apikey,
 	            data = {
-	                active = "",
-	                lastupdate = "",
+	                active = "true",
+	                lastupdate = "true",
 	                username = getgenv().Local(1),
 	                info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
 	                fruit = getFruit(),
@@ -347,8 +347,8 @@ task.spawn(function()
             local bodydata = {
                 api_key = apikey,
                 data = {
-                    active = "",
-                    lastupdate = "",
+                    active = "true",
+                    lastupdate = "true",
                     username = getgenv().Local(1),
                     info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
                     fruit = getFruit(),
