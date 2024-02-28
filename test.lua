@@ -27,7 +27,7 @@ function Added(data)
         Method = "POST",
         Body = data,
     })
-    print("💜 Added Account to ZDVLOGS ")
+    print("💜 Added Account to ZDVLOGS")
     return update
 end
 
