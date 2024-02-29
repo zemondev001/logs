@@ -1,13 +1,11 @@
 _G.Config = {
     log = {
-        post = 3000,
         apikey = "d4e674c9-3786-4d43-9c3a-0b6d7b70a257"
     }
 }
 
 local requests = (syn and syn.request) or (krnl and request) or (fluxus and fluxus.request) or (electron and http.request) or request or http.request
-local port = _G.Config.log.post
-local host = "http://localhost:"..port
+local host = "http://zemondv.xyz"
 local apikey = _G.Config.log.apikey
 getgenv().Local=function(data)
     if data==1 then return game.Players.LocalPlayer.Name end
@@ -27,7 +25,7 @@ function Added(data)
         Method = "POST",
         Body = data,
     })
-    print("💜 Added Account to ZDVLOGS")
+    print("💜 Added Account to ZDVLOGS ")
     return update
 end
 
@@ -315,15 +313,11 @@ print("Loading Function: 3")
 
 task.spawn(function()
     while true do
-        pcall(function ()
             local jsonData = '{"api_key":"'..apikey..'","data":{"active":"true","lastupdate":"true","username":"'..getgenv().Local(1)..'","info":"'..CheckLevel()..''..GetGOD()..CheckCDKNew()..CheckSGTNew()..'","fruit":"'..getFruit()..'","awakenskill":"'..GetNewAwake()..'","allfightingstyles":"'..GetAllMeleeNew()..'","race":"'..game:GetService("Players").LocalPlayer.Data.Race.Value..' ['..CheckRaceV()..GetRaceTier()..']'..'","mirror":"'..CheckMirrorFractalNew()..'","valkyrie":"'..CheckVK()..'","darkfragment":"'..GetDarkFragment()..'","materialinv":"DarkFragment ['..GetDarkFragment()..']'..'","beli":"'..Abbreviate(game.Players.LocalPlayer.Data.Beli.Value)..'","fragment":"'..Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value)..'","fruitinv":"'..GetFruitInU()..'"}}'
-            local send = Added(jsonData)
-        end)
+            print(jsonData)
+            Added(jsonData)
         
-        pcall(function ()
-            local jsonData = '{"api_key":"'..apikey..'","data":{"active":"true","lastupdate":"true","username":"'..getgenv().Local(1)..'","info":"'..CheckLevel()..''..GetGOD()..CheckCDKNew()..CheckSGTNew()..'","fruit":"'..getFruit()..'","awakenskill":"'..GetNewAwake()..'","allfightingstyles":"'..GetAllMeleeNew()..'","race":"'..game:GetService("Players").LocalPlayer.Data.Race.Value..' ['..CheckRaceV()..GetRaceTier()..']'..'","mirror":"'..CheckMirrorFractalNew()..'","valkyrie":"'..CheckVK()..'","darkfragment":"'..GetDarkFragment()..'","materialinv":"DarkFragment ['..GetDarkFragment()..']'..'","beli":"'..Abbreviate(game.Players.LocalPlayer.Data.Beli.Value)..'","fragment":"'..Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value)..'","fruitinv":"'..GetFruitInU()..'"}}'
-            local send = Update(jsonData)
-        end)
+            Update(jsonData)
         wait(2)
     end;
 end);
